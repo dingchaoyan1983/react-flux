@@ -7,12 +7,12 @@ var State = require('./components/state.react');
 var DefaultRoute = Router.DefaultRoute;
 
 var routes = (
-  <Route path="/react-flux/index.html" handler={App}>
+  <Route path="/" handler={App}>
     <DefaultRoute handler={Index}/>
     <Route name="state" path="state/:abbr" handler={State}/>
   </Route>
 );
 
-Router.run(routes, Router.HistoryLocation, function (Handler) {
+Router.run(routes, Router.HashLocation, function (Handler) {
   React.render(<Handler/>, document.getElementById('container'));
 });

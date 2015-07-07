@@ -16,12 +16,16 @@ module.exports = React.createClass({
 
   render: function () {
     var unitedState = StateStore.getStateByName(this.props.params.abbr);
-    return (
-      <div className="State">
-        <h1>{unitedState.name}</h1>
-        <img src={this.imageUrl(unitedState.name)}/>
-      </div>
-    );
+    if (unitedState !== undefined && unitedState.name) {
+      return (
+        <div className="State">
+          <h1>{unitedState.name}</h1>
+          <img src={this.imageUrl(unitedState.name)}/>
+        </div>
+      );
+    } else {
+      return <div className="State"></div>;
+    }
   }
 });
 

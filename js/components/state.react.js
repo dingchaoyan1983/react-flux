@@ -24,7 +24,7 @@ module.exports = React.createClass({
         </div>
       );
     } else {
-      return <div className="State"></div>;
+      return null;
     }
   }
 });

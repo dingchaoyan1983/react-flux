@@ -22,10 +22,14 @@ module.exports = React.createClass({
     StateActions.loadData();
   },
 
+  componentWillUnmount: function() {
+    StateStore.removeChangeListener(this._getAll);
+  },
+
   render: function () {
     var links = this.state.states.map(function (state) {
       return (
-        <li key={state.abbr}>
+        <li key={state.abbr} ref={state.abbr}>
           <Link to="state" params={{ abbr: state.abbr }}>{state.name}</Link>
         </li>
       );

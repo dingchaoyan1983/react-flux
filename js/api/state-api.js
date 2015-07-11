@@ -1,11 +1,11 @@
 /**
  * Created by daneding on 7/7/15.
  */
-var $ = require('jquery');
-var stateActions = require('../actions/state-action');
+import $ from 'jquery';
+import stateActions from '../actions/state-action';
 
-module.exports = {
-  loadAllData: function() {
+export default {
+  loadAllData() {
     $.getJSON('/states').then(function(states) {
       stateActions.loadedData(states);
     });

@@ -1,39 +1,39 @@
 /**
  * Created by daneding on 7/7/15.
  */
-var AppDispatcher = require('../dispatcher/AppDispatcher');
-var EventEmitter = require('events').EventEmitter;
-var assign = require('object-assign');
-var StateConstant = require('../constants/state-constant');
-var StateApi = require('../api/state-api');
+import AppDispatcher from '../dispatcher/AppDispatcher';
+import {EventEmitter} from 'events';
+import assign from 'object-assign';
+import StateConstant from '../constants/state-constant';
+import StateApi from '../api/state-api';
 
 
-var CHANGE_EVENT = 'change';
+let CHANGE_EVENT = 'change';
 
-var states = [];
+let states = [];
 
-var StateStore = assign({}, EventEmitter.prototype, {
+let StateStore = assign({}, EventEmitter.prototype, {
 
-  emitChange: function() {
+  emitChange() {
     this.emit(CHANGE_EVENT);
   },
 
   /**
    * @param {function} callback
    */
-  addChangeListener: function(callback) {
+  addChangeListener(callback) {
     this.on(CHANGE_EVENT, callback);
   },
 
-  removeChangeListener: function(callback) {
+  removeChangeListener(callback) {
     this.removeListener(CHANGE_EVENT, callback);
   },
 
-  getAll: function() {
+  getAll() {
     return states;
   },
 
-  getStateByName: function(abbr) {
+  getStateByName(abbr) {
     var _states = states.filter(function(entry){
       return entry.abbr === abbr;
     });
@@ -44,7 +44,7 @@ var StateStore = assign({}, EventEmitter.prototype, {
       return {};
     }
   },
-  setStates: function (_states) {
+  setStates(_states) {
     states = _states;
     this.emitChange();
   }
@@ -64,7 +64,7 @@ AppDispatcher.register(function(payload) {
   }
 })
 
-module.exports = StateStore;
+export default StateStore;
 
 
 

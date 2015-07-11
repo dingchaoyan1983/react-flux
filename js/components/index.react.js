@@ -1,10 +1,11 @@
 /**
  * Created by daneding on 7/7/15.
  */
-var React = require('react');
+import  React from 'react';
 
-module.exports = React.createClass({
-  render: function () {
+export default React.createClass({
+  displayName: 'Index',
+  render() {
     return <p>Select a state from the left</p>;
   }
 });

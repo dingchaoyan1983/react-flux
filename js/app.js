@@ -1,12 +1,10 @@
-var React = require('react');
-var Router = require('react-router');
-var Route = Router.Route;
-var App = require('./components/app.react');
-var Index = require('./components/index.react');
-var State = require('./components/state.react');
-var DefaultRoute = Router.DefaultRoute;
+import React from 'react';
+import Router, {Route, DefaultRoute} from 'react-router';
+import App from './components/app.react';
+import Index from './components/index.react';
+import State from './components/state.react';
 
-var routes = (
+let routes = (
   <Route path="/" handler={App}>
     <DefaultRoute handler={Index}/>
     <Route name="state" path="state/:abbr" handler={State}/>

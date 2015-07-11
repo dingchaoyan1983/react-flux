@@ -1,24 +1,37 @@
 /**
  * Created by daneding on 7/7/15.
  */
-var React = require('react');
-var StateStore = require('../stores/state-store');
+import React from 'react';
+import StateStore from '../stores/state-store';
 
-module.exports = React.createClass({
+export default React.createClass({
+
+  displayName: 'State',
 
   contextTypes: {
     router: React.PropTypes.func
   },
 
-  imageUrl: function (name) {
+  imageUrl(name) {
     return "http://www.50states.com/maps/" + underscore(name) + ".gif";
   },
 
-  render: function () {
-    var unitedState = StateStore.getStateByName(this.props.params.abbr);
+  getInitialState() {
+    return {next: 1};
+  },
+
+  incrNext() {
+    let next = this.state.next;
+    this.setState({next: next + 1});
+  },
+
+  render() {
+    let unitedState = StateStore.getStateByName(this.props.params.abbr);
     if (unitedState !== undefined && unitedState.name) {
       return (
         <div className="State">
+          <div>state is: {this.state.next}</div>
+          <button onClick={this.incrNext}>increase number</button>
           <h1>{unitedState.name}</h1>
           <img src={this.imageUrl(unitedState.name)}/>
         </div>

@@ -1,16 +1,16 @@
 /**
  * Created by daneding on 7/7/15.
  */
-var AppDispatcher = require('../dispatcher/AppDispatcher');
-var StateConstants = require('../constants/state-constant');
+import AppDispatcher from '../dispatcher/AppDispatcher';
+import StateConstants from '../constants/state-constant';
 
-var stateActions = {
-  loadData: function() {
+let stateActions = {
+  loadData() {
     AppDispatcher.dispatch({
       actionType: StateConstants.DO_STATE_LOAD
     });
   },
-  loadedData: function(states) {
+  loadedData(states) {
     AppDispatcher.dispatch({
       actionType: StateConstants.DID_STATE_LOAD,
       data: states
@@ -18,4 +18,4 @@ var stateActions = {
   }
 }
 
-module.exports = stateActions;
+export default stateActions;

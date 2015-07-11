@@ -1,35 +1,35 @@
 /**
  * Created by daneding on 7/7/15.
  */
-var React = require('react');
-var Router = require('react-router');
-var RouteHandler = Router.RouteHandler;
-var Link = Router.Link;
-var StateStore = require('../stores/state-store');
-var StateActions = require('../actions/state-action');
+import React from 'react';
+import {RouteHandler, Link} from 'react-router';
+import StateStore from '../stores/state-store';
+import StateActions from '../actions/state-action';
 
-module.exports = React.createClass({
-  getInitialState: function () {
+export default React.createClass({
+  displayName: 'App',
+
+  getInitialState() {
     return {
       states: []
     };
   },
 
-  componentDidMount: function () {
+  componentDidMount() {
     //add listener.
     StateStore.addChangeListener(this._getAll);
     //when the component did mount, request the states from backend.
     StateActions.loadData();
   },
 
-  componentWillUnmount: function() {
+  componentWillUnmount() {
     StateStore.removeChangeListener(this._getAll);
   },
 
-  render: function () {
-    var links = this.state.states.map(function (state) {
+  render() {
+    let links = this.state.states.map(function (state) {
       return (
-        <li key={state.abbr} ref={state.abbr}>
+        <li key={state.abbr}>
           <Link to="state" params={{ abbr: state.abbr }}>{state.name}</Link>
         </li>
       );
@@ -40,13 +40,13 @@ module.exports = React.createClass({
           {links}
         </ul>
         <div className="Detail">
-          <RouteHandler/>
+          <RouteHandler ref="handler"/>
         </div>
       </div>
     );
   },
 
-  _getAll: function() {
+  _getAll() {
     this.setState({
       states: StateStore.getAll()
     })

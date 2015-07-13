@@ -22,7 +22,11 @@
   "devDependencies": {
     "babelify": "^6.1.2",
     "browserify": "^6.2.0",
+    "del": "^1.2.0",
     "envify": "^3.0.0",
+    "gulp-browserify": "^0.5.1",
+    "gulp-rename": "^1.2.2",
+    "gulp": "^3.9.0",
     "jest-cli": "^0.4.3",
     "reactify": "^0.15.2",
     "uglify-js": "~2.4.15",

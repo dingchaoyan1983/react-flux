@@ -3,3 +3,4 @@
 /node_modules
 /js/bundle.js
 .idea/
+/js/bundle_fixture.js

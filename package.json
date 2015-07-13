@@ -5,6 +5,7 @@
   "main": "js/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build_fixture": "browserify js/fixtures/main.js > js/bundle_fixture.js",
     "build": "browserify js/app.js > js/bundle.js"
   },
   "author": "Dane<270422767@qq.com>",

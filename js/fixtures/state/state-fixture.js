@@ -1,7 +1,7 @@
 /**
  * Created by daneding on 7/7/15.
  */
-import fakeServer from '../fake-server';
+import fakeServer from '../../fake-server';
 
 let  states = [
   { abbr: "AL", name: "Alabama"},

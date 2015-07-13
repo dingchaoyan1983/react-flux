@@ -1,8 +1,9 @@
 /**
  * Created by daneding on 7/7/15.
  */
+import fakeServer from '../fake-server';
 
-var states = [
+let  states = [
   { abbr: "AL", name: "Alabama"},
   { abbr: "AK", name: "Alaska"},
   { abbr: "AZ", name: "Arizona"},
@@ -55,7 +56,7 @@ var states = [
   { abbr: "WY", name: "Wyoming"}
 ]
 
-pretender.get('/states', function(){
-  var all =  JSON.stringify(Object.keys(states).map(function(k){return states[k]}))
+fakeServer.get('/states', function(){
+  let all =  JSON.stringify(Object.keys(states).map(function(k){return states[k]}))
   return [200, {"Content-Type": "application/json"}, all];
 });

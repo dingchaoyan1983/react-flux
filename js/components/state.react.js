@@ -31,9 +31,9 @@ export default React.createClass({
       return (
         <div className="State">
           <div>state is: {this.state.next}</div>
-          <button onClick={this.incrNext}>increase number</button>
+          <button className="btn btn-default" onClick={this.incrNext}>increase number</button>
           <h1>{unitedState.name}</h1>
-          <img src={this.imageUrl(unitedState.name)}/>
+          <img src={this.imageUrl(unitedState.name)} style={{height:'500px'}}/>
         </div>
       );
     } else {
@@ -41,7 +41,6 @@ export default React.createClass({
     }
   }
 });
-
 
 function underscore(str) {
   return str.toLowerCase().replace(/ /, '_');

@@ -29,18 +29,20 @@ export default React.createClass({
   render() {
     let links = this.state.states.map(function (state) {
       return (
-        <li key={state.abbr}>
+        <li className="row">
           <Link to="state" params={{ abbr: state.abbr }}>{state.name}</Link>
         </li>
       );
     });
     return (
-      <div className="App">
-        <ul className="Master">
-          {links}
-        </ul>
-        <div className="Detail">
-          <RouteHandler ref="handler"/>
+      <div className="container-fluid">
+        <div className="row">
+          <ul className="col-xs-6" style={ {height: '100vh', overflow: 'auto'} }>
+            {links}
+          </ul>
+          <div className="col-xs-6">
+            <RouteHandler/>
+          </div>
         </div>
       </div>
     );

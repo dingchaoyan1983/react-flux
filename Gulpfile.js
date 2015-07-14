@@ -8,13 +8,13 @@ var del = require('del');
 
 gulp.task('clean:fixture', function(cb) {
   del([
-    './dist/bundle_fixture.js'
+    './dist/fixture.bundle.js'
   ], cb);
 });
 
 gulp.task('clean:app', function(cb) {
   del([
-    './dist/bundle.js'
+    './dist/app.bundle.js'
   ], cb);
 });
 
@@ -23,7 +23,7 @@ gulp.task('fixture', ['clean:fixture'],  function() {
     .pipe(browserify({
       transform: ['babelify', 'envify']
     }))
-    .pipe(rename('bundle_fixture.js'))
+    .pipe(rename('fixture.bundle.js'))
     .pipe(gulp.dest('./dist'))
 });
 
@@ -32,7 +32,7 @@ gulp.task('app', ['clean:app'], function() {
     .pipe(browserify({
       transform: ['babelify', 'envify']
     }))
-    .pipe(rename('bundle.js'))
+    .pipe(rename('app.bundle.js'))
     .pipe(gulp.dest('./dist'))
 });
 

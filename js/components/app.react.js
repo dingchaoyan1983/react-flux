@@ -5,6 +5,7 @@ import React from 'react';
 import {RouteHandler, Link} from 'react-router';
 import StateStore from '../stores/state-store';
 import StateActions from '../actions/state-action';
+import TagInput from './tagInput.react'
 
 export default React.createClass({
   displayName: 'App',
@@ -36,6 +37,11 @@ export default React.createClass({
     });
     return (
       <div className="container-fluid">
+        <div className="row">
+          <div className="col-xs-12">
+            <TagInput/>
+          </div>
+        </div>
         <div className="row">
           <ul className="col-xs-6" style={ {height: '100vh', overflow: 'auto'} }>
             {links}

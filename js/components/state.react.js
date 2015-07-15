@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import StateStore from '../stores/state-store';
+import {Button} from 'react-bootstrap';
 
 export default React.createClass({
 
@@ -31,7 +32,7 @@ export default React.createClass({
       return (
         <div className="State">
           <div>state is: {this.state.next}</div>
-          <button className="btn btn-default" onClick={this.incrNext}>increase number</button>
+          <Button onClick={this.incrNext}>increase number</Button>
           <h1>{unitedState.name}</h1>
           <img src={this.imageUrl(unitedState.name)} style={{height:'500px'}}/>
         </div>

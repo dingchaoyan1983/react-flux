@@ -72,6 +72,7 @@ input:focus {
 
 .tag-manager__dropdown-item {
   padding: 8px 10px;
+  cursor: pointer;
 }
 
 .tag-manager__dropdown-item:first-child {

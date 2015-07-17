@@ -68,7 +68,7 @@ export default React.createClass({
       this.setState({
         showDropdown: false
       });
-    }.bind(this), 200);
+    }.bind(this), 20);
 
     this.addTagToList();
   },

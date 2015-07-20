@@ -5,10 +5,17 @@
 import React from 'react';
 
 export default React.createClass({
+  getDefaultProps() {
+    return {
+      allTagList: [],
+      shownTagList: []
+    }
+  },
+
   getInitialState() {
     return {
-      allTagList: [{name: 'tag1'}, {name: 'tag2'}, {name: 'tag3'}],
-      shownTagList: [],
+      allTagList: this.props.allTagList,
+      shownTagList: this.props.shownTagList,
       value: '',
       showDropdown: false
     };
@@ -68,7 +75,7 @@ export default React.createClass({
       this.setState({
         showDropdown: false
       });
-    }.bind(this), 20);
+    }.bind(this), 100);
 
     this.addTagToList();
   },

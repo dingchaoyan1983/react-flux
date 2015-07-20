@@ -39,7 +39,7 @@ export default React.createClass({
       <div className="container-fluid">
         <div className="row">
           <div className="col-xs-12">
-            <TagInput/>
+            <TagInput allTagList={[{name:'tag1'}, {name:'tag2'} ,{name:'tag3'}]} shownTagList={[{name:'tag4'}, {name:'tag5'} ,{name:'tag6'}]}/>
           </div>
         </div>
         <div className="row">

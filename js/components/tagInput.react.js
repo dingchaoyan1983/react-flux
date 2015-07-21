@@ -3,6 +3,7 @@
  */
 
 import React from 'react';
+require('../../css/tag-input.css');
 
 export default React.createClass({
   getDefaultProps() {

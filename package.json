@@ -5,8 +5,8 @@
   "main": "js/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build_fixture": "browserify js/fixtures/main.js > js/fixture.bundle.js",
-    "build": "browserify js/app.js > js/app.bundle.js"
+    "build_fixture": "browserify js/fixtures/main.js > dist/fixture.bundle.js",
+    "build": "browserify js/app.js > dist/app.bundle.js"
   },
   "author": "Dane<270422767@qq.com>",
   "license": "MIT",
@@ -24,6 +24,8 @@
     "babel-loader": "^5.3.1",
     "babelify": "^6.1.2",
     "browserify": "^6.2.0",
+    "browserify-css": "^0.6.1",
+    "css-loader": "^0.15.5",
     "del": "^1.2.0",
     "envify": "^3.0.0",
     "gulp": "^3.9.0",
@@ -32,6 +34,7 @@
     "jest-cli": "^0.4.3",
     "node-libs-browser": "^0.5.2",
     "reactify": "^0.15.2",
+    "style-loader": "^0.12.3",
     "uglify-js": "~2.4.15",
     "watchify": "^2.1.1",
     "webpack": "^1.10.1"
@@ -39,7 +42,8 @@
   "browserify": {
     "transform": [
       "babelify",
-      "envify"
+      "envify",
+      "browserify-css"
     ]
   }
 }

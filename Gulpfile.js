@@ -30,10 +30,11 @@ gulp.task('fixture', ['clean:fixture'],  function() {
 gulp.task('app', ['clean:app'], function() {
   return gulp.src('./js/app.js')
     .pipe(browserify({
-      transform: ['babelify', 'envify']
+      transform: ['babelify', 'envify', 'browserify-css']
     }))
     .pipe(rename('app.bundle.js'))
     .pipe(gulp.dest('./dist'))
 });
 
 gulp.task('default', ['fixture', 'app']);
+gulp.task('clean', ['clean:app', 'clean:fixture']);

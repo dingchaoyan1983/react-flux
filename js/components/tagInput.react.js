@@ -59,8 +59,14 @@ export default React.createClass({
   },
 
   addTagToList() {
-    if (!!this.state.value.trim()) {
-      this.state.shownTagList.push({name: this.state.value.trim()});
+    let value = this.state.value.trim();
+    let shownTagList = this.state.shownTagList;
+    let tagList = shownTagList.map(function(item) {
+      return item.name
+    });
+
+    if (!!value && tagList.indexOf(value) === -1) {
+      this.state.shownTagList.push({name: value});
       this.setState({
         shownTagList: this.state.shownTagList
       });

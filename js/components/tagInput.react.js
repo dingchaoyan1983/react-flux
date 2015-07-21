@@ -18,7 +18,8 @@ export default React.createClass({
       allTagList: this.props.allTagList,
       shownTagList: this.props.shownTagList,
       value: '',
-      showDropdown: false
+      showDropdown: false,
+      selectedIndex: -1
     };
   },
 
@@ -44,7 +45,11 @@ export default React.createClass({
     let keyCode = event.keyCode;
 
     if(keyCode ===13) { //ENTER
-      this.addTagToList();
+      if(this.state.selectedIndex > -1 && !this.state.value) {
+        this.addTagToList(this.state.allTagList[this.state.selectedIndex].name);
+      } else {
+        this.addTagToList(this.state.value);
+      }
     } else if (keyCode === 8 && !this.state.value.trim()) { //BACKSPACE
       let lastIndex = this.state.shownTagList.length - 1;
       this.removeTagHandler(lastIndex);
@@ -52,21 +57,38 @@ export default React.createClass({
         value: ''
       });
     } else if (keyCode === 38) { //UP
+      let currentIndex = this.state.selectedIndex;
+      let totalLength = this.state.allTagList.length;
 
+      if(currentIndex !== -1) {
+        currentIndex -= 1;
+      }
+
+      currentIndex = totalLength + currentIndex;
+      this.setState({
+        selectedIndex: currentIndex % totalLength
+      });
     } else if (keyCode === 40) { //DOWN
+      let currentIndex = this.state.selectedIndex;
+      let totalLength = this.state.allTagList.length;
 
+      currentIndex += 1;
+      currentIndex = Math.abs(currentIndex);
+
+      this.setState({
+        selectedIndex: currentIndex % totalLength
+      });
     }
   },
 
-  addTagToList() {
-    let value = this.state.value.trim();
+  addTagToList(tag) {
     let shownTagList = this.state.shownTagList;
     let tagList = shownTagList.map(function(item) {
       return item.name
     });
 
-    if (!!value && tagList.indexOf(value) === -1) {
-      this.state.shownTagList.push({name: value});
+    if (!!tag && tagList.indexOf(tag) === -1) {
+      this.state.shownTagList.push({name: tag});
       this.setState({
         shownTagList: this.state.shownTagList
       });
@@ -80,35 +102,30 @@ export default React.createClass({
   handleBlur() {
     window.setTimeout(function(){
       this.setState({
-        showDropdown: false
+        showDropdown: false,
+        value: ''
       });
     }.bind(this), 100);
-
-    this.addTagToList();
   },
 
   handleFocus() {
     this.setState({
-      showDropdown: true
+      showDropdown: true,
+      selectedIndex: -1
     });
   },
 
   dropdownItemClickHandler(index) {
     let selectedItem = this.state.allTagList[index];
-    this.state.shownTagList.push({name: selectedItem.name});
-
-    this.setState({
-      shownTagList: this.state.shownTagList
-    });
-
+    this.addTagToList(selectedItem.name);
   },
 
   appendDropdown() {
     if (this.state.showDropdown && this.state.allTagList.length > 0) {
-      return <ul className="tag-manager__dropdown">
+      return <ul className="tag-manager__dropdown" ref="dropdown">
               {
                 this.state.allTagList.map(function(item, index) {
-                  return <li className="tag-manager__dropdown-item" onClick={this.dropdownItemClickHandler.bind(this, index)}>{item.name}</li>
+                  return <li className={this.state.selectedIndex === index ? "tag-manager__dropdown-item highlight": "tag-manager__dropdown-item"} onClick={this.dropdownItemClickHandler.bind(this, index)}>{item.name}</li>
                 }, this)
               }
             </ul>;

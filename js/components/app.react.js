@@ -5,7 +5,9 @@ import React from 'react';
 import {RouteHandler, Link} from 'react-router';
 import StateStore from '../stores/state-store';
 import StateActions from '../actions/state-action';
-import TagInput from './tagInput.react'
+import {TagInput} from 'tag-input.dane';
+//import TagInput from './tagInput.react';
+
 
 export default React.createClass({
   displayName: 'App',

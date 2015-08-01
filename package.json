@@ -18,7 +18,8 @@
     "object-assign": "^3.0.0",
     "react": "^0.13.3",
     "react-bootstrap": "^0.23.7",
-    "react-router": "^0.13.3"
+    "react-router": "^0.13.3",
+    "tag-input.dane": "^1.0.0"
   },
   "devDependencies": {
     "babel-loader": "^5.3.1",
